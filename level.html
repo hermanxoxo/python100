@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python100 – Level</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css" />
+</head>
+<body class="level-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="back-btn">← Kart</a>
+      <div class="logo">
+        <span class="logo-icon">🐍</span>
+        <span class="logo-text">Python<span class="logo-accent">100</span></span>
+      </div>
+      <div class="level-badge-wrap">
+        <span class="level-badge" id="level-badge">Level 1</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="level-main">
+    <div class="level-header">
+      <div class="level-meta">
+        <span class="level-num" id="level-num">01</span>
+        <div>
+          <h1 class="level-title" id="level-title">Laster…</h1>
+          <span class="level-konsept" id="level-konsept"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="level-tabs">
+      <button class="tab-btn active" id="tab-learn" onclick="switchTab('learn')">📖 Lær</button>
+      <button class="tab-btn" id="tab-solve" onclick="switchTab('solve')">💻 Løs</button>
+    </div>
+
+    <!-- Learn section -->
+    <section class="tab-panel" id="panel-learn">
+      <div class="learn-card">
+        <div class="learn-content" id="learn-content">Laster innhold…</div>
+      </div>
+      <div class="example-card">
+        <div class="example-header">
+          <span>Eksempelkode</span>
+          <button class="btn-copy" onclick="copyExample()">Kopier</button>
+        </div>
+        <pre class="example-code" id="example-code"></pre>
+      </div>
+      <button class="btn-primary btn-large" onclick="switchTab('solve')">Gå til oppgaven →</button>
+    </section>
+
+    <!-- Solve section -->
+    <section class="tab-panel hidden" id="panel-solve">
+      <div class="task-card">
+        <h3>Oppgave</h3>
+        <div class="task-text" id="task-text"></div>
+      </div>
+
+      <div class="editor-wrap">
+        <div class="editor-header">
+          <span>Kode-editor</span>
+          <div class="editor-actions">
+            <button class="btn-ghost btn-sm" onclick="resetCode()">Tilbakestill</button>
+          </div>
+        </div>
+        <div id="editor-container"></div>
+      </div>
+
+      <div class="action-row">
+        <button class="btn-primary btn-large" id="run-btn" onclick="runTests()" disabled>
+          <span id="run-btn-text">⏳ Laster Python…</span>
+        </button>
+        <button class="btn-ghost btn-sm" id="hint-btn" onclick="showNextHint()">
+          💡 Hint (<span id="hint-count">0</span> igjen)
+        </button>
+      </div>
+
+      <div id="loading-bar" class="loading-bar hidden">
+        <div class="loading-bar-fill"></div>
+        <span id="loading-text">Laster Python-miljø…</span>
+      </div>
+
+      <div id="test-results" class="test-results hidden">
+        <h3>Testresultater</h3>
+        <div id="test-list"></div>
+        <div id="test-summary"></div>
+      </div>
+
+      <div class="hints-panel" id="hints-panel"></div>
+    </section>
+  </main>
+
+  <!-- Confetti canvas -->
+  <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;pointer-events:none;z-index:9999;"></canvas>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+  <script src="level.js"></script>
+</body>
+</html>

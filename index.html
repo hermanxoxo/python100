@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python100 – Lær Python på 100 dager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🐍</span>
+        <span class="logo-text">Python<span class="logo-accent">100</span></span>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-value" id="score">0</span>
+          <span class="stat-label">poeng</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value" id="streak">0</span>
+          <span class="stat-label">🔥 streak</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value" id="completed-count">0</span>
+          <span class="stat-label">/ 100 fullført</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="hero">
+      <h1>100 dager. 100 oppgaver. Lær Python fra bunnen av.</h1>
+      <p>Én ny utfordring låses opp hver dag. Løs oppgaven i nettleseren, bygg streak, og nå level 100.</p>
+    </section>
+
+    <div class="section-header">
+      <h2>Dine levels</h2>
+      <div class="legend">
+        <span class="legend-item"><span class="dot dot-done"></span> Fullført</span>
+        <span class="legend-item"><span class="dot dot-open"></span> Tilgjengelig</span>
+        <span class="legend-item"><span class="dot dot-locked"></span> Låst</span>
+      </div>
+    </div>
+
+    <div class="level-grid" id="level-grid">
+      <!-- Filled by app.js -->
+    </div>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+      </div>
+      <span class="progress-label" id="progress-label">0 av 100</span>
+    </div>
+
+    <div class="reset-wrap">
+      <button class="btn-ghost" id="reset-btn">Tilbakestill fremgang</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Python100 — Lær Python på 100 dager. Drives av <a href="https://pyodide.org" target="_blank">Pyodide</a>.</p>
+  </footer>
+
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <p>Er du sikker på at du vil slette all fremgang? Dette kan ikke angres.</p>
+      <div class="modal-actions">
+        <button class="btn-danger" id="confirm-reset">Ja, slett alt</button>
+        <button class="btn-ghost" id="cancel-reset">Avbryt</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
