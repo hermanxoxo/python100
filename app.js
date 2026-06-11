@@ -16,11 +16,9 @@ function saveProgress(p) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
 }
 
-function getAvailableLevels(startDate) {
-  if (!startDate) return 1;
-  const diffMs = Date.now() - new Date(startDate).getTime();
-  const days = Math.floor(diffMs / 86400000);
-  return Math.min(days + 1, 100);
+function getAvailableLevels(completedLevels) {
+  if (!completedLevels.length) return 1;
+  return Math.min(Math.max(...completedLevels) + 1, 100);
 }
 
 function todayStr() {
@@ -30,7 +28,7 @@ function todayStr() {
 function renderGrid(levels, progress) {
   const grid = document.getElementById('level-grid');
   grid.innerHTML = '';
-  const available = getAvailableLevels(progress.startDate);
+  const available = getAvailableLevels(progress.completedLevels);
   const completed = new Set(progress.completedLevels);
 
   levels.forEach(lvl => {
